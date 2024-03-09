@@ -13,13 +13,14 @@
     internal static class EffectsDisablerManager
     {
         public static List<EffectsCondition> effectsDisablerList;
-        public static HashSet<string> effectsDisabledUids = new();
+        public static HashSet<string> effectsDisabledUids;
         public static bool AnyEffect = false;
 
         public static void Init()
         {
             if (DisableAllEffects) return;
             effectsDisablerList = new();
+            effectsDisabledUids = new();
 
             if (!DisableJudgement)
             {

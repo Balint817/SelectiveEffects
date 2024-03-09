@@ -19,5 +19,9 @@ namespace SelectiveEffects
         {
             _isGameMain = sceneName.Equals("GameMain");
         }
+        public override void OnPreferencesLoaded()
+        {
+            EffectsDisablerManager.Init();
+        }
     }
 }
