@@ -12,7 +12,6 @@ using MelonLoader;
 
 namespace SelectiveEffects.Patches
 {
-    [HarmonyPatch(typeof(JudgeDisplay), nameof(JudgeDisplay.OnEnable))]
     class PurePerfectsPatch
     {
         static bool _isPatched;
