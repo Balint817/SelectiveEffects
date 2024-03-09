@@ -8,12 +8,33 @@ using System.Threading.Tasks;
 using HarmonyLib;
 using System.Reflection;
 using SelectiveEffects.Managers;
+using MelonLoader;
 
 namespace SelectiveEffects.Patches
 {
     [HarmonyPatch(typeof(JudgeDisplay), nameof(JudgeDisplay.OnEnable))]
     class PurePerfectsPatch
     {
+        static bool _isPatched;
+
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(typeof(JudgeDisplay), nameof(JudgeDisplay.OnEnable));
+        }
+        public static void Reload(HarmonyLib.Harmony harmonyInstance)
+        {
+            var postfix = Postfix;
+            var postfixInfo = postfix.Method;
+            if (SettingsManager.DisableJudgement || SettingsManager.DisablePerfects || !SettingsManager.DisablePurePerfects)
+            {
+                if (_isPatched)
+                {
+                    harmonyInstance.Unpatch(TargetMethod(), postfixInfo);
+                }
+                return;
+            }
+            harmonyInstance.Patch(TargetMethod(), postfix: postfixInfo.ToNewHarmonyMethod());
+        }
         static void Postfix(JudgeDisplay __instance)
         {
             if (!SettingsManager.Enabled

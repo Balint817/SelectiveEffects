@@ -1,5 +1,6 @@
 ﻿using MelonLoader;
 using SelectiveEffects.Managers;
+using SelectiveEffects.Patches;
 
 namespace SelectiveEffects
 {
@@ -22,6 +23,7 @@ namespace SelectiveEffects
         public override void OnPreferencesLoaded()
         {
             EffectsDisablerManager.Init();
+            PurePerfectsPatch.Reload(this.HarmonyInstance);
         }
     }
 }
