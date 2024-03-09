@@ -71,11 +71,13 @@ namespace SelectiveEffects.Managers
         public static bool DisablePerfects => JudgementCategory._disablePerfects.Value;
         public static bool DisableGreats => JudgementCategory._disableGreats.Value;
         public static bool DisablePass => JudgementCategory._disablePass.Value;
+        public static bool DisablePurePerfects => JudgementCategory._disablePurePerfects.Value;
 
         private static class JudgementCategory
         {
             public static MelonPreferences_Entry<bool> _disableJudgement;
             public static MelonPreferences_Entry<bool> _makeJudgementSmaller;
+            public static MelonPreferences_Entry<bool> _disablePurePerfects;
             public static MelonPreferences_Entry<bool> _disablePerfects;
             public static MelonPreferences_Entry<bool> _disableGreats;
             public static MelonPreferences_Entry<bool> _disablePass;
@@ -87,6 +89,7 @@ namespace SelectiveEffects.Managers
 
                 _disableJudgement = judgementCategory.CreateEntry<bool>("DisableJudgement", false);
                 _makeJudgementSmaller = judgementCategory.CreateEntry<bool>("MakeJudgementSmaller", false, description: "DisableJudgement takes precedence.");
+                _disablePurePerfects = judgementCategory.CreateEntry<bool>("DisablePurePerfects", false);
                 _disablePerfects = judgementCategory.CreateEntry<bool>("DisablePerfects", false);
                 _disableGreats = judgementCategory.CreateEntry<bool>("DisableGreats", false);
                 _disablePass = judgementCategory.CreateEntry<bool>("DisablePass", false);
