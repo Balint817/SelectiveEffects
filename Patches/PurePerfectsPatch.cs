@@ -16,7 +16,11 @@ namespace SelectiveEffects.Patches
     {
         static void Postfix(JudgeDisplay __instance)
         {
-            if (!SettingsManager.DisablePurePerfects || TaskStageTarget.instance.m_Score < 1) return;
+            if (!SettingsManager.Enabled
+                || SettingsManager.DisableJudgement
+                || SettingsManager.DisablePerfects
+                || !SettingsManager.DisablePurePerfects
+                || TaskStageTarget.instance.m_Score < 1) return;
             var battleRole = BattleRoleAttributeComponent.instance;
             if (!battleRole.m_IsShowLateEarly) return;
             __instance.gameObject.SetActive(battleRole.m_JudgeState != 0);
