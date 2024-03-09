@@ -1,5 +1,6 @@
 ﻿namespace SelectiveEffects.Managers
 {
+    using SelectiveEffects.Patches;
     using static SettingsManager;
 
     /*
@@ -16,7 +17,7 @@
         public static HashSet<string> effectsDisabledUids = new();
         public static bool AnyEffect = false;
 
-        public static void Init()
+        public static void Init(HarmonyLib.Harmony harmonyInstance)
         {
             if (DisableAllEffects) return;
             effectsDisablerList = new();
@@ -45,6 +46,7 @@
             if (DisableElfinFx) effectsDisablerList.Add(new ElfinFx());
             if (DisableDustFx) effectsDisablerList.Add(new DustFx());
             if (DisableHurtFx) effectsDisablerList.Add(new HurtFx());
+            PurePerfectsPatch.Reload(harmonyInstance);
 
             AnyEffect = effectsDisablerList.Count > 0;
         }

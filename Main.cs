@@ -12,8 +12,7 @@ namespace SelectiveEffects
         public override void OnInitializeMelon()
         {
             SettingsManager.Load();
-            EffectsDisablerManager.Init();
-            PurePerfectsPatch.Reload(this.HarmonyInstance);
+            EffectsDisablerManager.Init(this.HarmonyInstance);
             LoggerInstance.Msg("SelectiveEffects has loaded correctly!");
         }
 
@@ -24,8 +23,7 @@ namespace SelectiveEffects
         public override void OnPreferencesLoaded()
         {
             if (!SettingsManager.IsLoaded) return;
-            EffectsDisablerManager.Init();
-            PurePerfectsPatch.Reload(this.HarmonyInstance);
+            EffectsDisablerManager.Init(this.HarmonyInstance);
         }
     }
 }
