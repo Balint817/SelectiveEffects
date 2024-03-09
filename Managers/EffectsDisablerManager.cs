@@ -13,7 +13,7 @@
     internal static class EffectsDisablerManager
     {
         public static List<EffectsCondition> effectsDisablerList;
-        public static HashSet<string> effectsDisabledUids;
+        public static HashSet<string> effectsDisabledUids = new();
         public static bool AnyEffect = false;
 
         public static void Init()

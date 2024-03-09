@@ -22,6 +22,7 @@ namespace SelectiveEffects
         }
         public override void OnPreferencesLoaded()
         {
+            if (!SettingsManager.IsLoaded) return;
             EffectsDisablerManager.Init();
             PurePerfectsPatch.Reload(this.HarmonyInstance);
         }

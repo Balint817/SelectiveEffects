@@ -4,7 +4,7 @@ namespace SelectiveEffects.Managers
 {
     internal static class SettingsManager
     {
-        private static readonly string SettingsPath = "UserData/SelectiveEffects.cfg";
+        internal static readonly string SettingsPath = "UserData/SelectiveEffects.cfg";
 
         //--------------------------------------------------------------------+
         // Main Category
@@ -155,6 +155,8 @@ namespace SelectiveEffects.Managers
         public static bool DisableHurtFx => MiscCategory._disableHurtFx.Value;
         public static bool DisableElfinFx => MiscCategory._disableElfinFx.Value;
 
+        public static bool IsLoaded { get; private set; }
+
         private static class MiscCategory
         {
             public static MelonPreferences_Entry<bool> _disableBossFx;
@@ -182,6 +184,7 @@ namespace SelectiveEffects.Managers
             HitCategory.Init();
             MusicHeartsCategory.Init();
             MiscCategory.Init();
+            IsLoaded = true;
         }
     }
 }
