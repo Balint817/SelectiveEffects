@@ -155,7 +155,7 @@ namespace SelectiveEffects.Managers
         public static bool DisableHurtFx => MiscCategory._disableHurtFx.Value;
         public static bool DisableElfinFx => MiscCategory._disableElfinFx.Value;
 
-        public static bool IsLoaded { get; private set; }
+        public static bool IsLoaded { get; private set; } = false;
 
         private static class MiscCategory
         {

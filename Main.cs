@@ -13,6 +13,7 @@ namespace SelectiveEffects
         {
             SettingsManager.Load();
             EffectsDisablerManager.Init();
+            PurePerfectsPatch.Reload(this.HarmonyInstance);
             LoggerInstance.Msg("SelectiveEffects has loaded correctly!");
         }
 
