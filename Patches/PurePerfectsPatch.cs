@@ -14,7 +14,7 @@ namespace SelectiveEffects.Patches
 {
     class PurePerfectsPatch
     {
-        static bool _isPatched;
+        static bool _isPatched = false;
 
         static MethodBase TargetMethod()
         {
