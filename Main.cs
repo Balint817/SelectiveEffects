@@ -13,17 +13,18 @@ namespace SelectiveEffects
         {
             SettingsManager.Load();
             EffectsDisablerManager.Init(this.HarmonyInstance);
-            LoggerInstance.Msg("SelectiveEffects has loaded correctly!");
+            LoggerInstance.Msg("SelectiveEffects loaded correctly!");
+            MelonPreferences.OnPreferencesLoaded.Subscribe(PreferencesLoaded);
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
             _isGameMain = sceneName.Equals("GameMain");
         }
-        public override void OnPreferencesLoaded()
+        void PreferencesLoaded(string path)
         {
-            if (!SettingsManager.IsLoaded) return;
             EffectsDisablerManager.Init(this.HarmonyInstance);
+            MelonLogger.Msg("SelectiveEffects reloaded correctly!");
         }
     }
 }

@@ -155,7 +155,6 @@ namespace SelectiveEffects.Managers
         public static bool DisableHurtFx => MiscCategory._disableHurtFx.Value;
         public static bool DisableElfinFx => MiscCategory._disableElfinFx.Value;
 
-        public static bool IsLoaded { get; private set; } = false;
 
         private static class MiscCategory
         {
@@ -184,7 +183,6 @@ namespace SelectiveEffects.Managers
             HitCategory.Init();
             MusicHeartsCategory.Init();
             MiscCategory.Init();
-            IsLoaded = true;
         }
     }
 }
