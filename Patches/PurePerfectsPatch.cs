@@ -29,10 +29,15 @@ namespace SelectiveEffects.Patches
                 if (_isPatched)
                 {
                     harmonyInstance.Unpatch(TargetMethod(), postfixInfo);
+                    _isPatched = false;
                 }
                 return;
             }
-            harmonyInstance.Patch(TargetMethod(), postfix: postfixInfo.ToNewHarmonyMethod());
+            if (!_isPatched)
+            {
+                harmonyInstance.Patch(TargetMethod(), postfix: postfixInfo.ToNewHarmonyMethod());
+                _isPatched = true;
+            }
         }
         static void Postfix(JudgeDisplay __instance)
         {
