@@ -14,17 +14,18 @@ namespace SelectiveEffects
             SettingsManager.Load();
             EffectsDisablerManager.Init(this.HarmonyInstance);
             LoggerInstance.Msg("SelectiveEffects loaded correctly!");
-            MelonPreferences.OnPreferencesLoaded.Subscribe(PreferencesLoaded);
+            //MelonPreferences.OnPreferencesLoaded.Subscribe(PreferencesLoaded);
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
             _isGameMain = sceneName.Equals("GameMain");
         }
-        void PreferencesLoaded(string path)
-        {
-            EffectsDisablerManager.Init(this.HarmonyInstance);
-            MelonLogger.Msg("SelectiveEffects reloaded correctly!");
-        }
+        //TODO: Figure out why the MelonPreferences.OnPreferencesLoaded event never fires.
+        //void PreferencesLoaded(string path)
+        //{
+        //    EffectsDisablerManager.Init(this.HarmonyInstance);
+        //    MelonLogger.Msg("SelectiveEffects reloaded correctly!");
+        //}
     }
 }
